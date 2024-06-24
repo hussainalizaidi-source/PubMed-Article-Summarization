@@ -1,5 +1,4 @@
 nltk==3.6.2
 streamlit
-re
 requests
 openai
