@@ -1,5 +1,5 @@
 PubMed Article Summarization and Image 
-Generation Web Application (Download the PDF)
+Generation Web Application (Download the PDF for code references)
 
 Introduction 
 This project aims to develop a web application that summarizes PubMed articles and 
