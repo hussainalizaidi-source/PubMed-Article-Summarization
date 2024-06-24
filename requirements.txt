@@ -1,0 +1,5 @@
+nltk
+streamlit
+re
+requests
+openai
