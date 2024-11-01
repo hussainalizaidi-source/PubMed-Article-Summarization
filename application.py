@@ -45,11 +45,11 @@ def lemmatize_text(text):
     lemmatized_text = [lemmatizer.lemmatize(word, get_wordnet_pos(word)) for word in word_tokens]
     return ' '.join(lemmatized_text)
 #using langchain to import openai for summary
-from langchain import OpenAI
+from langchain_community.llms import OpenAI
 from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
-def generate_response(txt):
+def generate_response(txt,api_key):
     # Instantiate the LLM model
     llm = OpenAI(temperature=0, openai_api_key=api_key)
 
@@ -63,7 +63,7 @@ def generate_response(txt):
     # Text summarization
     chain = load_summarize_chain(llm, chain_type='map_reduce')
     return chain.run(docs)
-def generate_response2(txt):
+def generate_response2(txt,api_key):
     # Instantiate the LLM model
     llm = OpenAI(temperature=0.5, openai_api_key=api_key)
 
@@ -105,6 +105,7 @@ option2 = st.radio(
 # Function to generate image from text using OpenAI's DALL-E
 import openai
 def generate_image(prompt):
+    openai.api_key = api_key
     response = openai.Image.create(
         prompt=prompt,
         n=1,
@@ -118,9 +119,9 @@ with st.form('summarize_form', clear_on_submit=True):
     if submitted and api_key.startswith('sk-'):
         with st.spinner('Calculating...'):
             if option == "Brief":
-                response = generate_response(text)
+                response = generate_response(text,api_key)
             elif option == "Detailed":
-                response = generate_response2(text)
+                response = generate_response2(text,api_key)
         summarized.append(response)
         if len(summarized):
             st.info(response)
