@@ -45,7 +45,7 @@ def lemmatize_text(text):
     lemmatized_text = [lemmatizer.lemmatize(word, get_wordnet_pos(word)) for word in word_tokens]
     return ' '.join(lemmatized_text)
 #using langchain to import openai for summary
-from langchain_community.llms import OpenAI
+from langchain import OpenAI
 from langchain.docstore.document import Document
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.chains.summarize import load_summarize_chain
