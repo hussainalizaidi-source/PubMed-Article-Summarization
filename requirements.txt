@@ -1,4 +1,5 @@
 nltk==3.8.1
 streamlit
 requests
-openai
+openai==0.28.0
+langchain
