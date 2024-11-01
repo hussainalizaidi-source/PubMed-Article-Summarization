@@ -3,3 +3,4 @@ streamlit
 requests
 openai==0.28.0
 langchain
+langchain_community
